@@ -32,14 +32,14 @@ Hardware quirk fixes for the Realtek ALC245 codec on Minisforum AI series mini P
 ## Install
 
 ```bash
-sudo ./setup.sh
+./install.sh
 # then reboot
 ```
 
 ## Uninstall
 
 ```bash
-sudo ./setup.sh --uninstall
+./uninstall.sh
 # then reboot
 ```
 

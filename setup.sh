@@ -4,11 +4,11 @@
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-TARGET_USER="${SUDO_USER:-mini}"
+TARGET_USER="${SUDO_USER:-$USER}"
 TARGET_HOME=$(eval echo "~$TARGET_USER")
 
 if [ "$EUID" -ne 0 ]; then
-    echo "Please run with sudo: sudo $0"
+    echo "Please run with: ./install.sh"
     exit 1
 fi
 
