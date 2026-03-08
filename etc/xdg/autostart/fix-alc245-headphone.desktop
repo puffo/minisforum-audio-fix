@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=Fix ALC245 Headphone
+Exec=/usr/local/bin/fix-alc245-headphone
+X-GNOME-Autostart-enabled=true

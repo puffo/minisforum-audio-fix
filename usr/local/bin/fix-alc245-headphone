@@ -1,0 +1,7 @@
+#!/bin/bash
+# Wait for WirePlumber to finish initialising ALSA controls
+sleep 3
+# Disable auto-mute (jack detect on 0x21 is broken, always reports unplugged)
+amixer -c1 sset 'Auto-Mute Mode' Disabled >/dev/null 2>&1
+# Unmute headphone output
+amixer -c1 sset 'Headphone' 100% unmute >/dev/null 2>&1
