@@ -1,7 +1,15 @@
 #!/bin/bash
 # Wait for WirePlumber to finish initialising ALSA controls
 sleep 3
+
+# Find the card number for the ALC245 codec (Family 17h/19h HD Audio Controller)
+CARD=$(grep -l "ALC245" /proc/asound/card*/codec#0 2>/dev/null | head -1 | grep -oP 'card\K[0-9]+')
+
+if [ -z "$CARD" ]; then
+    exit 1
+fi
+
 # Disable auto-mute (jack detect on 0x21 is broken, always reports unplugged)
-amixer -c1 sset 'Auto-Mute Mode' Disabled >/dev/null 2>&1
+amixer -c"$CARD" sset 'Auto-Mute Mode' Disabled >/dev/null 2>&1
 # Unmute headphone output
-amixer -c1 sset 'Headphone' 100% unmute >/dev/null 2>&1
+amixer -c"$CARD" sset 'Headphone' 100% unmute >/dev/null 2>&1
